@@ -6,9 +6,17 @@ def at_least():
             for word in line.strip().split():
                 if len(word) >= 20:
                     print(word)
-                    
+         
 def has_no_e(word):
-    if 'e' in word:
+    '''
+    >>> has_no_e('texas')
+    False
+    >>> has_no_e('longhorn')
+    True
+    >>> has_no_e('UTEP')
+    False
+    '''
+    if 'e' in word.lower():
         return False
     else:
         return True
@@ -21,12 +29,41 @@ def no_e():
                 if has_no_e(word) == True:
                     count_no_e += 1
     a = count_no_e / 113809
-    print(f'{a * 100}%')
+    b = a * 100
+    print(f'{b:.3F}%')
     
 def avoids(word, str):
+    '''
+    >>> avoids('Texas', 'tpr')
+    False
+    >>> avoids('Texas', 'bcd')
+    True
+    >>> avoids('LONGHORNS', 'lgh')
+    False
+    >>> avoids('longhorns', 'LGH')
+    False
+    '''
+    for letters in word:
+        if letters in word:
+            return False
+        else:
+            return True
+    
+#    for i in range(len(str)):      
+#        if str in word:
+#            return False
+#        else:
+#            return True
+    
+##    for letters in word.lower():
+##            return False
+##        else:
+##            return True
+    
+def count_avoids():
     pass
 
-def count_avoids():
+def uses():
     pass
 
 #def read_file():
@@ -44,6 +81,9 @@ def count_avoids():
 #            for word in line.strip().split():
 #                count += 1
 #        print(count)
-    
+
+
 if __name__ == "__main__":
-    no_e()
+    avoids('Texas', 'tpr')
+#    import doctest
+#    doctest.testmod()
