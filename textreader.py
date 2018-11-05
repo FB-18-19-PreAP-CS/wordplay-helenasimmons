@@ -43,28 +43,62 @@ def avoids(word, str):
     >>> avoids('longhorns', 'LGH')
     False
     '''
-    for letters in word:
-        if letters in word:
-            return False
+    for letter in word:
+        for ele in str:
+            if ele in word.lower():
+                return False
         else:
             return True
     
-#    for i in range(len(str)):      
-#        if str in word:
-#            return False
-#        else:
-#            return True
-    
-##    for letters in word.lower():
-##            return False
-##        else:
-##            return True
-    
 def count_avoids():
+    count = 0
+    letters = input('What are the forbidden letters? ')
+    with open("words.txt") as file:
+        for line in file:
+            for word in line.strip().split():
+                if avoids(word, letters) == True:
+                    count += 1
+    print(count)
+
+
+def uses_only(word,string):
+    '''
+    >>> uses_only('yes', 'sey')
+    True
+    >>> uses_only('watermelon', 'xyz')
+    False
+    >>> uses_only('three', 'rent')
+    False
+    >>> uses_only('yes', 'yesa')
+    False
+    '''
+    for letter in word:
+        if letter in word:
+            return True
+        else:
+            return False
+
+def words_with_only():
+    with open("words.txt") as file:
+        for line in file:
+            for word in line.strip().split():
+                pass
+
+def uses_all():
     pass
 
-def uses():
+def how_many_uses_all():
     pass
+
+def is_abecedarian(word):
+    for letter in word:
+        pass
+            
+    
+def count_abecedarian():
+    pass 
+
+
 
 #def read_file():
 #    
@@ -85,5 +119,5 @@ def uses():
 
 if __name__ == "__main__":
     avoids('Texas', 'tpr')
-#    import doctest
-#    doctest.testmod()
+    import doctest
+    doctest.testmod()
