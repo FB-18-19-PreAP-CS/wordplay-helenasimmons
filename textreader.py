@@ -32,7 +32,7 @@ def no_e():
     b = a * 100
     print(f'{b:.3F}%')
     
-def avoids(word, str):
+def avoids(word, string):
     '''
     >>> avoids('Texas', 'tpr')
     False
@@ -44,7 +44,7 @@ def avoids(word, str):
     False
     '''
     for letter in word:
-        for ele in str:
+        for ele in string.lower():
             if ele in word.lower():
                 return False
         else:
@@ -63,6 +63,7 @@ def count_avoids():
 
 def uses_only(word,string):
     '''
+    Returns true if the word contains only the letters in the string.
     >>> uses_only('yes', 'sey')
     True
     >>> uses_only('watermelon', 'xyz')
@@ -91,8 +92,18 @@ def how_many_uses_all():
     pass
 
 def is_abecedarian(word):
-    for letter in word:
-        pass
+    '''
+    >>> is_abecedarian('abcde')
+    True
+    >>> is_abecedarian('yes')
+    False
+    '''
+    for i in range(len(word) - 1):
+        if word[i] > word[i+1]:
+            return False
+        else:
+            return True
+
             
     
 def count_abecedarian():
